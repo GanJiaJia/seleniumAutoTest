@@ -21,9 +21,13 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install Chrome
-      uses: browser-actions/setup-chrome@v1
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
     - name: Install ChromeDriver
-      uses: browser-actions/setup-chromedriver@v1
+      run: |
+        npm install -g webdriver-manager
+        webdriver-manager update
     - name: Install dependencies
       run: npm install
     - name: Build project
