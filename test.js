@@ -94,10 +94,10 @@ const doAutoTest = async () => {
     try {
         let options = new chrome.Options();
         options.addArguments('--lang=en');
-        options.addArguments('headless'); // 添加无头参数
+        // options.addArguments('headless'); // 添加无头参数
         options.addArguments('--no-sandbox');
         options.addArguments('--disable-dev-shm-usage');
-        options.addArguments('--window-size=1920,1080');
+        options.addArguments('--window-size=full');
 
         let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
         await loginAdminPortal(driver)
