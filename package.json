@@ -1,7 +1,7 @@
 {
   "name": "test-adminPortal",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "test.js",
   "license": "MIT",
   "dependencies": {
     "selenium-webdriver": "^4.16.0",
