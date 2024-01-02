@@ -112,7 +112,7 @@ const doAutoTest = async () => {
     
     let options = new chrome.Options();
     options.addArguments('--lang=en');
-    // options.addArguments('headless'); // 添加无头参数
+    options.addArguments('headless'); // 添加无头参数
     options.addArguments('--no-sandbox');
     options.addArguments('--disable-dev-shm-usage');
     options.addArguments('--window-size=full');
