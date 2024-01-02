@@ -92,8 +92,10 @@ const doAutoTest = async () => {
         options.addArguments('--lang=en');
         options.addArguments('headless');
         options.addArguments('disable-gpu');
-        options.addArguments('--no-sandbox');
-        options.addArguments('--disable-dev-shm-usage');
+        options.addArguments('--no-sandbox'); // 禁用沙盒模式
+        options.addArguments('--disable-dev-shm-usage'); // 解决共享内存问题
+        options.addArguments('--disable-extensions'); // 禁用扩展
+        options.addArguments('--remote-debugging-port=9222'); // 设置调试端口
 
 
         let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
