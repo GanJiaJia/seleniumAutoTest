@@ -126,31 +126,36 @@ async function Order (driver) {
                 await closeBtn.click()
             }
 
-            // ViewOrder
-            const viewBtn = firstTr.findElement(By.linkText('View'))
-            viewBtn && await viewBtn.click()
-
-            try {
-                const closeViewBtn = await driver.wait(until.elementIsVisible(driver.findElement(By.className('ant-modal-close'))), 10000);
-                if (closeViewBtn) {
-                    await sleep(5000);
-                    await closeViewBtn.click()
-                }
-
-            } catch (error) {
-                
-            }
-
         } catch (error) {
             console.error("confirmOrder", error)
         }
         // ant-dropdown-menu-item
     }
 
+    const viewOrder = async () =>  {
+         // ViewOrder
+         const tableBody = await driver.wait(until.elementLocated(By.className('ant-table-body')), 20000)
+         const firstTr = await tableBody.findElement(By.className("ant-table-row"))
+         const viewBtn = firstTr.findElement(By.linkText('View'))
+         viewBtn && await viewBtn.click()
+
+         try {
+             const closeViewBtn = await driver.wait(until.elementIsVisible(driver.findElement(By.className('ant-modal-close'))), 10000);
+             if (closeViewBtn) {
+                 await sleep(5000);
+                 await closeViewBtn.click()
+             }
+
+         } catch (error) {
+             
+         }
+    }
+
 
     await goOrder()
-    await addOrder()
-    await confirmOrder()
+    // await addOrder()
+    // await confirmOrder()
+    await viewOrder()
 }
 
 module.exports = {
