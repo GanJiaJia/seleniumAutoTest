@@ -116,7 +116,7 @@ async function AutoCommenceConfig (driver) {
 
 
         } catch (error) {
-            console.editFn('editFn', error)
+            console.error('editFn', error)
         }
     }
 

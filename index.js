@@ -61,8 +61,6 @@ const selectLanguage = async (driver) => {
 
         let element = await driver.wait(until.elementLocated(By.xpath('//li[contains(data-menu-id, "en-US")]')), 20000);
         // element && element.click();
-        // let look = await driver.wait(until.elementLocated(By.xpath('//span[data-menu-id="English"]')), 300);
-        // let look = await driver.executeScript(`return document.querySelector('span[aria-label="English"]')`);
         
     } catch (error) {
         console.log('error', error)
@@ -75,8 +73,6 @@ const selectLanguage = async (driver) => {
 // 切换外观
 const switchLook = async (driver) => {
 
-    // let element = await driver.executeScript("return document.getElementById('yourElementId');");
-    // let element = await driver.wait(until.elementLocated(By.id('yourElementId')), 10000);
     try {
         // let parent = await driver.findElement(By.className('top-switch-wrap'));
         let parent = await driver.wait(until.elementLocated(By.className('top-switch-wrap')), 8000);

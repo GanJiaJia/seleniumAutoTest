@@ -153,8 +153,8 @@ async function Order (driver) {
 
 
     await goOrder()
-    // await addOrder()
-    // await confirmOrder()
+    await addOrder()
+    await confirmOrder()
     await viewOrder()
 }
 
