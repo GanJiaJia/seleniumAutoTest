@@ -44,8 +44,8 @@ const loginAdminPortal = async (driver) => {
     })
 
     // 导航到一个网页.
-    // await driver.get('https://adminportal.super10.com.au');
-    await driver.get('https://adminportal.thunderite.com');
+    await driver.get('https://adminportal.super10.com.au');
+    // await driver.get('https://adminportal.thunderite.com');
     await driver.manage().setTimeouts({implicit: 2000});
 
     let Username = await driver.findElement(By.name('Username'));
@@ -112,12 +112,10 @@ const doAutoTest = async () => {
     
     let options = new chrome.Options();
     options.addArguments('--lang=en');
-    options.addArguments('headless'); // 添加无头参数
-    options.addArguments('--no-sandbox');
-    options.addArguments('--disable-dev-shm-usage');
-    options.addArguments('--window-size=full');
-    options.addArguments('--disable-extensions'); // 禁用扩展
-    options.addArguments('--remote-debugging-port=9222'); // 设置调试端口
+    options.addArguments('headless'); // 启用无头模式
+    options.addArguments('disable-gpu'); // 在某些环境中需要禁用GPU
+    options.addArguments('--no-sandbox'); // 禁用沙盒模式
+    options.addArguments('--disable-dev-shm-usage'); // 解决共享内存问题
 
     let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
 
@@ -180,12 +178,12 @@ const doAutoTest = async () => {
       
         console.error("root-error", error)
 
-        await driver.takeScreenshot().then(
-            function(image, err) {
-                console.error('errRoot', err)
-                require('fs').writeFileSync(`screenshots/screenshot-${new Date()?.valueOf()}.png`, image, 'base64');
-            }
-        );
+        // await driver.takeScreenshot().then(
+        //     function(image, err) {
+        //         console.error('errRoot', err)
+        //         require('fs').writeFileSync(`screenshots/screenshot-${new Date()?.valueOf()}.png`, image, 'base64');
+        //     }
+        // );
 
     }
 }
