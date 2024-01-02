@@ -90,6 +90,8 @@ const doAutoTest = async () => {
     try {
         let options = new chrome.Options();
         options.addArguments('--lang=en');
+        options.addArguments('headless');
+        // options.addArguments('disable-gpu');
 
         let driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
         await loginAdminPortal(driver)
